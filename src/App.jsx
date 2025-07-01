@@ -19,6 +19,7 @@ function App() {
   const navigate=useNavigate()
  
   const checkUser = async () => {
+    // Trigger Vercel redeployment
       try {
         const response = await axios.get(`${baseUrl}/user/profile`, { withCredentials: true });
         console.log(response.data)
