@@ -28,7 +28,7 @@ function App() {
           setIsAuthenticated(true);
         } else {
           setIsAuthenticated(false);
-          navigate("/login")
+         
           toast.error("You are not logged in")
 
         }
