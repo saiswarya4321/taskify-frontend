@@ -36,7 +36,7 @@ function Login() {
       toast.success("Login")
       
       navigate("/app")
-      window.location.reload();
+      
 
        
      
