@@ -20,6 +20,7 @@ function App() {
  
   const checkUser = async () => {
     // Trigger Vercel redeployment
+    //trigger to vercel 
       try {
         const response = await axios.get(`${baseUrl}/user/profile`, { withCredentials: true });
         console.log(response.data)
