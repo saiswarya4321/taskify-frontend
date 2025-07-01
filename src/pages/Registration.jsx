@@ -7,7 +7,7 @@ function Registration() {
     const navigate = useNavigate();
     axios.defaults.withCredentials = true;
 
-    const baseUrl = import.meta.env.VITE_API_BASE_URL
+    const baseUrl = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '');
 
     const [formErrors, setFormErrors] = useState({ email: "", password: "" })
     const [data, setData] = useState({ name: "", password: "" })

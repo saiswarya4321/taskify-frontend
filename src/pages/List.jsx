@@ -12,7 +12,7 @@ import { toast } from 'react-toastify';
 
 
 function List() {
-  const baseUrl = import.meta.env.VITE_API_BASE_URL;
+ const baseUrl = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '');
   const navigate=useNavigate()
 
   const { todo } = useOutletContext();

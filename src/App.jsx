@@ -15,7 +15,7 @@ axios.defaults.withCredentials = true;
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const baseUrl = import.meta.env.VITE_API_BASE_URL;
+  const baseUrl = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '');
   const navigate=useNavigate()
  
   const checkUser = async () => {

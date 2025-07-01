@@ -5,7 +5,7 @@ axios.defaults.withCredentials = true;
 
 export default function Userroute({children}) {
 
-    const baseUrl = import.meta.env.VITE_API_BASE_URL;
+    const baseUrl = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '');
 
     const[data,setData]=useState(null);
     const navigate=useNavigate();

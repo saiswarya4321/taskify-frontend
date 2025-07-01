@@ -9,7 +9,7 @@ axios.defaults.withCredentials = true;
 function AddTodo() {
 
   const { fetchTodo } = useOutletContext();
-  const baseUrl = import.meta.env.VITE_API_BASE_URL;
+  const baseUrl = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '');
   // const user = useSelector((state) => state.user.value);
   const navigate=useNavigate()
   
