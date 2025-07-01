@@ -18,7 +18,7 @@ function List() {
   const { todo } = useOutletContext();
 const handleDelete=async(id)=>{
 try {
-  const response= await axios.delete(`${baseUrl}/todo/delete/${id}`,{withCredentials:true})
+  const response= await axios.delete(`${baseUrl}/todo/delete/${id}`,{headers: { 'Content-Type': 'application/json' },withCredentials:true})
   toast.success("Deleted successfully");
    
   window.location.reload();

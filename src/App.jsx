@@ -22,7 +22,8 @@ function App() {
     // Trigger Vercel redeployment
     //trigger to vercel 
       try {
-        const response = await axios.get(`${baseUrl}/user/profile`, { withCredentials: true });
+        const response = await axios.get(`${baseUrl}/user/profile`, {headers: { 'Content-Type': 'application/json' },
+           withCredentials: true });
         console.log(response.data)
         if (response.data.data) {
           setIsAuthenticated(true);
