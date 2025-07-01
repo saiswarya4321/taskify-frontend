@@ -46,7 +46,7 @@ try {
   toast.success("Deleted successfully");
    
    setTodo(todo.filter(todoo => todoo._id !== id));
-  navigate("/app")
+  
   
 } catch (error) {
   console.log("deleted");
