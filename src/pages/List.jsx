@@ -18,21 +18,24 @@ function List() {
   const navigate=useNavigate()
 
   const [todo, setTodo] = useState([])
-  const fetchTodo = async () => {
-      try {
-        const response = await axios.get(`${baseUrl}/todo/list`, {headers: { 'Content-Type': 'application/json' }, withCredentials: true })
-        setTodo(response.data)
-        console.log("Fetched Todos:", response.data)
-      } catch (error) {
-        console.log(error)
-      }
-    }
+
   useEffect(() => {
-    
-    fetchTodo();
+    const fetchTodo = async () => {
+        try {
+            const response = await axios.get(`${baseUrl}/todo/list`, {
+                headers: { 'Content-Type': 'application/json' },
+                withCredentials: true
+            })
+            setTodo(response.data)
+            console.log("Fetched Todos:", response.data)
+        } catch (error) {
+            console.log(error)
+            toast.error("Failed to fetch todos.")
+        }
+    }
 
-  }, [])
-
+    fetchTodo()
+}, [])
 
   
 
