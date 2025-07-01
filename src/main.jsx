@@ -54,9 +54,9 @@ const router = createBrowserRouter([
       {
         path: "/list",
         element: (
-  <Userroute>
+  
     <List />
-  </Userroute>
+  
 )
       },
 

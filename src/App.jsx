@@ -26,9 +26,10 @@ function App() {
         console.log(response.data)
         if (response.data.data) {
           setIsAuthenticated(true);
+          localStorage.setItem('isLoggedIn', 'true'); // save status
         } else {
           setIsAuthenticated(false);
-         
+         localStorage.removeItem('isLoggedIn'); // clear status
           toast.error("You are not logged in")
 
         }
@@ -39,9 +40,12 @@ function App() {
       }
     };
 
-    useEffect(()=>{
-      checkUser();
-    },[])
+   useEffect(() => {
+    // Check from localStorage on page load
+    const loginStatus = localStorage.getItem('isLoggedIn') === 'true';
+    setIsAuthenticated(loginStatus);
+    checkUser();
+  }, []);
     
 
   return (
