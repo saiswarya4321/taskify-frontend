@@ -16,7 +16,7 @@ function Login() {
 
   
 
-  const baseUrl = import.meta.env.VITE_API_BASE_URL;
+  const baseUrl = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '');
 
   const handleChange = (e) => setData({ ...data, [e.target.name]: e.target.value.trim() })
 
