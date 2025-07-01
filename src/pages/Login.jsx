@@ -42,7 +42,7 @@ function Login() {
      
     } catch (error) {
       console.log(error)
-      toast.error("Login failed || User not exist")
+      toast.error(error.response?.data?.message || "Login failed || User not exist");
     }
 
 

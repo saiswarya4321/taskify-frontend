@@ -6,23 +6,44 @@ import { Link, useNavigate } from 'react-router-dom'
 
 axios.defaults.withCredentials = true;
 
-import { useOutletContext } from 'react-router-dom';
+
 import { toast } from 'react-toastify';
+
 
 
 
 function List() {
  const baseUrl = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '');
+  console.log(baseUrl)
   const navigate=useNavigate()
 
-  const { todo } = useOutletContext();
+  const [todo, setTodo] = useState([])
+  const fetchTodo = async () => {
+      try {
+        const response = await axios.get(`${baseUrl}/todo/list`, { withCredentials: true })
+        setTodo(response.data)
+        console.log("Fetched Todos:", response.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  useEffect(() => {
+    
+    fetchTodo();
+
+  }, [])
+
+
+  
+
+ 
 const handleDelete=async(id)=>{
 try {
   const response= await axios.delete(`${baseUrl}/todo/delete/${id}`,{headers: { 'Content-Type': 'application/json' },withCredentials:true})
   toast.success("Deleted successfully");
    
-  window.location.reload();
-  navigate("/")
+  
+  navigate("/updatetodo/:id")
   
 } catch (error) {
   console.log("deleted");

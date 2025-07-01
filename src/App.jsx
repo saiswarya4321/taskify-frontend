@@ -14,45 +14,46 @@ import { toast } from 'react-toastify'
 axios.defaults.withCredentials = true;
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const baseUrl = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '');
-  const navigate=useNavigate()
+  // const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // const baseUrl = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '');
+  // const navigate=useNavigate()
  
-  const checkUser = async () => {
-    // Trigger Vercel redeployment
-    //trigger to vercel 
-      try {
-        const response = await axios.get(`${baseUrl}/user/profile`, {headers: { 'Content-Type': 'application/json' },
-           withCredentials: true });
-        console.log(response.data)
-        if (response.data.data) {
-          setIsAuthenticated(true);
-          localStorage.setItem('isLoggedIn', 'true'); // save status
-        } else {
-          setIsAuthenticated(false);
-         localStorage.removeItem('isLoggedIn'); // clear status
-          toast.error("You are not logged in")
+  // const checkUser = async () => {
+  //   // Trigger Vercel redeployment
+  //   //trigger to vercel 
+  //     try {
+  //       const response = await axios.get(`${baseUrl}/user/profile`, {headers: { 'Content-Type': 'application/json' },
+  //          withCredentials: true });
+  //       console.log(response.data)
+  //       if (response.data.data) {
+  //         setIsAuthenticated(true);
+  //         localStorage.setItem('isLoggedIn', 'true'); // save status
+  //       } else {
+  //         setIsAuthenticated(false);
+  //        localStorage.removeItem('isLoggedIn'); // clear status
+  //         toast.error("You are not logged in")
 
-        }
-      } catch (error) {
-        console.log(error);
-        setIsAuthenticated(false);
-         navigate("/login")
-      }
-    };
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //       setIsAuthenticated(false);
+  //        navigate("/login")
+  //     }
+  //   };
 
-   useEffect(() => {
-    // Check from localStorage on page load
-    const loginStatus = localStorage.getItem('isLoggedIn') === 'true';
-    setIsAuthenticated(loginStatus);
-    checkUser();
-  }, []);
+  //  useEffect(() => {
+  //   // Check from localStorage on page load
+  //   const loginStatus = localStorage.getItem('isLoggedIn') === 'true';
+  //   setIsAuthenticated(loginStatus);
+  //   checkUser();
+  // }, []);
     
 
   return (
     <>
     <Home/>
-   {isAuthenticated && <List />} 
+   {/* {isAuthenticated && <List />}  */}
+   <List/>
     <AddTodo />
     
       </>
