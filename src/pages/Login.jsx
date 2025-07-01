@@ -26,7 +26,8 @@ function Login() {
     e.preventDefault();
     
     try {
-      const response = await axios.post(`${baseUrl}/user/login`, data, { withCredentials: true })
+      const response = await axios.post(`${baseUrl}/user/login`, data, {headers: { 'Content-Type': 'application/json' },
+         withCredentials: true })
       //  dispatch(saveUser(response.data.user.id)); 
       localStorage.setItem('isLoggedIn', 'true');
 

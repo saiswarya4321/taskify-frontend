@@ -39,6 +39,7 @@ function Registration() {
         }
         try {
             const response = await axios.post(`${baseUrl}/user/register`, data, {
+                headers: { 'Content-Type': 'application/json' },
                 withCredentials: true
             })
             toast.success("Saved successfully");
