@@ -57,7 +57,7 @@ function Updatetodo() {
         withCredentials: true
       })
       toast.success("Updated successfully")
-      navigate("/updatetodo/:id")
+      navigate("/app")
     } catch (error) {
       console.log("Error in updating");
       toast.success("Error in updation")

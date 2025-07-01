@@ -44,12 +44,12 @@ function AddTodo() {
       return;
     }
     try {
-      const response = await axios.post(`${baseUrl}/todo/add`, todo, { withCredentials: true });
+      const response = await axios.post(`${baseUrl}/todo/add`, todo, {headers: { 'Content-Type': 'application/json' }, withCredentials: true });
       toast.success("Todo Added Successfully");
-      fetchTodo();
+      
       setTodo({ name: '', description: '', eventDate: '' });
       console.log(response.data);
-      navigate("/")
+      navigate("/list")
     } catch (error) {
       console.error(error);
       toast.error("Failed to add todo ");

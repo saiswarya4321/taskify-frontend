@@ -20,7 +20,7 @@ function List() {
   const [todo, setTodo] = useState([])
   const fetchTodo = async () => {
       try {
-        const response = await axios.get(`${baseUrl}/todo/list`, { withCredentials: true })
+        const response = await axios.get(`${baseUrl}/todo/list`, {headers: { 'Content-Type': 'application/json' }, withCredentials: true })
         setTodo(response.data)
         console.log("Fetched Todos:", response.data)
       } catch (error) {
@@ -42,8 +42,8 @@ try {
   const response= await axios.delete(`${baseUrl}/todo/delete/${id}`,{headers: { 'Content-Type': 'application/json' },withCredentials:true})
   toast.success("Deleted successfully");
    
-  
-  navigate("/updatetodo/:id")
+   setTodo(todo.filter(todoo => todoo._id !== id));
+  navigate("/app")
   
 } catch (error) {
   console.log("deleted");

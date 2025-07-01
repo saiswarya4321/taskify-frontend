@@ -43,7 +43,7 @@ function Registration() {
                 withCredentials: true
             })
             toast.success("Saved successfully");
-            navigate("/")
+            navigate("/app")
 
         }
         catch (error) {
@@ -64,7 +64,7 @@ function Registration() {
                 <input type="password" name="password" id="password" onChange={handleChange} placeholder='Enter your password' className='w-full p-2 mb-2 border border-gray-700 rounded focus:outline-none' />
                 {formErrors.password && <p className='text-red-500 text-sm mb-2'>{formErrors.password}</p>}
                 <button className='bg-green-600 border-none rounded-lg w-full text-white p-2 mt-2 font-bold' type='submit'>Submit</button>
-                <div className='w-max-w-md mt-2 font-medium text-xs text-gray-300'><Link to={"/login"}><p> Already have an account?</p></Link></div>
+                <div className='w-max-w-md mt-2 font-medium text-xs text-gray-300'><Link to={"/"}><p> Already have an account?</p></Link></div>
             </form>
 
 

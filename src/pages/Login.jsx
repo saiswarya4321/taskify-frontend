@@ -35,7 +35,7 @@ function Login() {
         console.log("user", response.data.user);
       toast.success("Login")
       
-      navigate("/")
+      navigate("/app")
       window.location.reload();
 
        
