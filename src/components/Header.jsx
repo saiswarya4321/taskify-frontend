@@ -74,10 +74,7 @@ function Header() {
 </svg>
 
   </div></Link></li>
-  <li><Link to={"/list"}><div>
-  view
-
-  </div></Link></li>
+  
 
              <li className="cursor-pointer hover:text-gray-400">
             <Link to={"/app"}>

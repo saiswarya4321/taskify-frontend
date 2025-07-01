@@ -55,7 +55,7 @@ try {
 }
 
  return (
-  <div className='bg-black min-h-screen text-white flex flex-col sm:flex-row justify-center sm:items-center flex-wrap gap-3 md:gap-0 p-10' id='listTodo'>
+  <div className='bg-black min-h-screen text-white flex flex-col sm:flex-row justify-center sm:items-center flex-wrap gap-2 md:gap-0 p-10' id='listTodo'>
 
     {todo?.length > 0 ? (
       todo.map((t, index) => (

@@ -49,7 +49,7 @@ function AddTodo() {
       
       setTodo({ name: '', description: '', eventDate: '' });
       console.log(response.data);
-      navigate("/app")
+      navigate("/addtodo")
     } catch (error) {
       console.error(error);
       toast.error("Failed to add todo ");
