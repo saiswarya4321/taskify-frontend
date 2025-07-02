@@ -44,7 +44,7 @@ function Registration() {
             })
             toast.success("Saved successfully");
             navigate("/app")
-            window.location.reload();
+           
 
         }
         catch (error) {

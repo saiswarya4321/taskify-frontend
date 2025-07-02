@@ -37,7 +37,6 @@ function Login() {
       
       navigate("/app")
       // window.location.href = "/app";
-window.location.reload();
 
        
      

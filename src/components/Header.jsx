@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 axios.defaults.withCredentials = true;
 
@@ -9,8 +9,10 @@ function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
   const baseUrl = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '');
+  const location = useLocation();
 
   useEffect(() => {
+    
   const checkLogin = async () => {
     try {
       const response = await axios.get(`${baseUrl}/user/islogin`, { withCredentials: true });
@@ -26,7 +28,7 @@ function Header() {
   };
 
   checkLogin();
-}, []);
+}, [location]);
 
 
   // Logout handler
