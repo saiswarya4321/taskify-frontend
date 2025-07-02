@@ -45,6 +45,7 @@ function Registration() {
             const response = await axios.post(`${baseUrl}/user/register`, data, {
                 headers: { 'Content-Type': 'application/json' },
                 withCredentials: true
+                
             })
             if (response.status === 201) {
                 toast.success("Saved successfully");
