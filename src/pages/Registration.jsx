@@ -10,7 +10,7 @@ function Registration() {
     const baseUrl = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '');
 
     const [formErrors, setFormErrors] = useState({ email: "", password: "" })
-    const [data, setData] = useState({ name: "", password: "" })
+    const [data, setData] = useState({ email: "", password: "" })
 
     const handleChange = (e) => setData({ ...data, [e.target.name]: e.target.value.trim() })
 

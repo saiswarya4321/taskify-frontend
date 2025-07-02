@@ -36,6 +36,7 @@ function Header() {
       localStorage.removeItem('isLoggedIn');
       setIsLoggedIn(false);
       navigate('/');
+      window.location.reload();
     } catch (error) {
       console.error('Logout failed', error);
     }
