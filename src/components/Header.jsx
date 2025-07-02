@@ -10,11 +10,24 @@ function Header() {
   const navigate = useNavigate();
   const baseUrl = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '');
 
-  // Check login status on page load
   useEffect(() => {
-    const loginStatus = localStorage.getItem('isLoggedIn') === 'true';
-    setIsLoggedIn(loginStatus);
-  }, []);
+  const checkLogin = async () => {
+    try {
+      const response = await axios.get(`${baseUrl}/user/islogin`, { withCredentials: true });
+      if (response.data.loggedIn) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    } catch (error) {
+      console.error('Error checking login status', error);
+      setIsLoggedIn(false);
+    }
+  };
+
+  checkLogin();
+}, []);
+
 
   // Logout handler
   const handleLogout = async () => {
