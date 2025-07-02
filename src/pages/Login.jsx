@@ -24,6 +24,10 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!data.email.trim() || !data.password.trim()) {
+    toast.error("Both email and password are required.");
+    return;
+  }
 
     try {
       const response = await axios.post(`${baseUrl}/user/login`, data, {
@@ -32,7 +36,7 @@ function Login() {
       })
       dispatch(saveUser(response.data.user));
       
-
+console.log("Sending Login Data:", data);
 
       console.log("user", response.data.user);
       toast.success("Login")

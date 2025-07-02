@@ -9,7 +9,12 @@ function Updatetodo() {
 
   const baseUrl = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '');
 
-  const [todo, setTodo] = useState({})
+  const [todo, setTodo] = useState({
+  name: '',
+  description: '',
+  eventDate: '',
+  
+});
   const navigate=useNavigate()
 
   const { id } = useParams();
