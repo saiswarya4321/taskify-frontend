@@ -1,11 +1,15 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
+import { toast } from 'react-toastify';
+import { saveUser } from '../redux/features/userSlice';
+axios.defaults.withCredentials = true;
 
 function Registration() {
     const navigate = useNavigate();
-    axios.defaults.withCredentials = true;
+
+    const dispatch = useDispatch();
 
     const baseUrl = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '');
 
@@ -42,14 +46,22 @@ function Registration() {
                 headers: { 'Content-Type': 'application/json' },
                 withCredentials: true
             })
-            toast.success("Saved successfully");
-            navigate("/app")
-           
+            if (response.status === 201) {
+                toast.success("Saved successfully");
+                console.log("registered user", response.data.user)
+                dispatch(saveUser(response.data.user));
+                navigate("/app");
+            }
 
         }
         catch (error) {
             console.log(error)
-            toast.error(" User with this email already exists")
+            toast.error(" Registration failed")
+            if (error.response && error.response.data && error.response.data.message) {
+                console.error(error.response.data.message); // Show backend message
+            } else {
+                console.error("Registration failed. Please try again.");
+            }
         }
     }
     return (

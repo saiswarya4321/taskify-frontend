@@ -10,11 +10,11 @@ import { saveUser } from '../redux/features/userSlice';
 axios.defaults.withCredentials = true;
 function Login() {
   const [data, setData] = useState({ email: '', password: '' });
-  
-  const navigate = useNavigate();
-  const dispatch=useDispatch();
 
-  
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+
 
   const baseUrl = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '');
 
@@ -24,25 +24,32 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
-      const response = await axios.post(`${baseUrl}/user/login`, data, {headers: { 'Content-Type': 'application/json' },
-         withCredentials: true })
-      //  dispatch(saveUser(response.data.user.id)); 
-      localStorage.setItem('isLoggedIn', 'true');
-
-
-        console.log("user", response.data.user);
-      toast.success("Login")
+      const response = await axios.post(`${baseUrl}/user/login`, data, {
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: true
+      })
+      dispatch(saveUser(response.data.user));
       
-      navigate("/app")
-      // window.location.href = "/app";
 
-       
-     
+
+      console.log("user", response.data.user);
+      toast.success("Login")
+
+      navigate("/app")
+      
+
+
+
     } catch (error) {
       console.log(error)
-      toast.error(error.response?.data?.message || "Login failed || User not exist");
+      toast.error("Login failed");
+      if (error.response && error.response.data && error.response.data.message) {
+        console.error(error.response.data.message); // Shows backend reason
+      } else {
+        console.error("Login failed. Please try again.");
+      }
     }
 
 
@@ -58,10 +65,10 @@ function Login() {
 
         <label htmlFor="email" className='block mb-2 font-medium'>Email :</label>
         <input type='text' id='email' name='email' required onChange={handleChange} className='w-full p-2 border border-gray-700 rounded focus:outline-none mb-2' placeholder='Enter your email' />
-        
+
         <label htmlFor="password" className='block mb-2 font-medium'>Password :</label>
         <input type="text" name="password" id="password" required onChange={handleChange} placeholder='Enter your password' className='w-full p-2 mb-2 border border-gray-700 rounded focus:outline-none' />
-         
+
         <button className='bg-green-600 border-none rounded-xl w-full text-white p-2 mt-2  font-bold' type='submit'>Login</button>
         <div className='w-max-w-md mt-2 font-medium text-xs'><Link to={"/registration"}><p>New user</p></Link></div>
 
