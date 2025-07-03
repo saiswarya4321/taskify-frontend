@@ -71,7 +71,7 @@ console.log("Sending Login Data:", data);
         <input type='text' id='email' name='email' required onChange={handleChange} className='w-full p-2 border border-gray-700 rounded focus:outline-none mb-2' placeholder='Enter your email' />
 
         <label htmlFor="password" className='block mb-2 font-medium'>Password :</label>
-        <input type="text" name="password" id="password" required onChange={handleChange} placeholder='Enter your password' className='w-full p-2 mb-2 border border-gray-700 rounded focus:outline-none' />
+        <input type="password" name="password" id="password" required onChange={handleChange} placeholder='Enter your password' className='w-full p-2 mb-2 border border-gray-700 rounded focus:outline-none' />
 
         <button className='bg-green-600 border-none rounded-xl w-full text-white p-2 mt-2  font-bold' type='submit'>Login</button>
         <div className='w-max-w-md mt-2 font-medium text-xs'><Link to={"/registration"}><p>New user</p></Link></div>
