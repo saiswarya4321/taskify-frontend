@@ -59,9 +59,9 @@ try {
 
     {todo?.length > 0 ? (
       todo.map((t, index) => (
-        <div key={index} className='w-full basis-1/2 sm:basis-1/4 p-2 min-w-[100px] sm:min-w-[700px]'>
+        <div key={index} className=' sm:basis-1/4 p-2 min-w-[100px]'>
 
-          <div className='flex flex-row justify-center  sm:p-2 w-full gap-3'>
+          <div className='flex flex-row justify-center  sm:p-2 w-full gap-3 '>
             <Link to={`/updatetodo/${t._id}`}>
               <div className='bg-green-800 p-4 rounded-2xl hover:bg-green-200'>
                 <p className='text-xs text-gray-300'>Added on {t.date}</p>
